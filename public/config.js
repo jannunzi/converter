@@ -5,8 +5,16 @@
 
     function Configuration($routeProvider) {
         $routeProvider
-            .when("/", {
+            .when("/converter", {
                 templateUrl: "views/converter/converter-list.view.html"
-            });
+            })
+            .when("/converter/new", {
+                templateUrl: "views/converter/converter-new.view.html",
+                controller: "NewConverterController",
+                controllerAs: "model"
+            })
+            .otherwise({
+                redirectTo: "/converter"
+            })
     }
 })();
