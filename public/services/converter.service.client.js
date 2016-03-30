@@ -7,9 +7,14 @@
         var api = {
             createConverter: createConverter,
             findAllConverters: findAllConverters,
-            findConverterById: findConverterById
+            findConverterById: findConverterById,
+            updateConverter: updateConverter
         };
         return api;
+
+        function updateConverter(converter) {
+            return $http.put("/api/converter/"+converter._id, converter);
+        }
 
         function findConverterById(converterId) {
             return $http.get("/api/converter/"+converterId);

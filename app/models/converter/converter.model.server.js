@@ -8,9 +8,14 @@ module.exports = function() {
     var api = {
         createConverter: createConverter,
         findAllConverters: findAllConverters,
-        findConverterById: findConverterById
+        findConverterById: findConverterById,
+        updateConverter: updateConverter
     };
     return api;
+
+    function updateConverter(converterId, converter) {
+        return ConverterModel.update({_id: converterId}, {$set: converter});
+    }
 
     function findConverterById(converterId) {
         return ConverterModel.findById(converterId);

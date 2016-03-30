@@ -10,8 +10,10 @@
 <table class="table">
     <tr ng-repeat="converter in model.data">
         <td>
-            <a href="#/converter/{{converter._id}}">
-                {{converter.name}}
+            {{converter.name}}
+            <a href="#/converter/{{converter._id}}"
+               class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>
             </a>
         </td>
     </tr>

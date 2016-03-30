@@ -5,9 +5,11 @@
         .controller("ConverterListController", converterListController)
         .controller("NewConverterController", newConverterController);
 
-    function editConverterController($routeParams, ConverterService) {
+    function editConverterController($location, $routeParams, ConverterService) {
 
         var vm = this;
+
+        vm.updateConverter = updateConverter;
 
         function init() {
             ConverterService
@@ -23,6 +25,18 @@
         }
         init();
 
+        function updateConverter(converter) {
+            ConverterService
+                .updateConverter(converter)
+                .then(
+                    function() {
+                        $location.url("/converter");
+                    },
+                    function(err) {
+                        vm.error = err;
+                    }
+                );
+        }
     }
 
     function converterListController(ConverterService) {
