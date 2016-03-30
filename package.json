@@ -1,0 +1,22 @@
+{
+  "name": "converters",
+  "version": "1.0.0",
+  "description": "Various converters from HTML to JSON to SQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jannunzi/converters.git"
+  },
+  "author": "Jose Annunziato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jannunzi/converters/issues"
+  },
+  "homepage": "https://github.com/jannunzi/converters#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
