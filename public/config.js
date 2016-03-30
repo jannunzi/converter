@@ -15,6 +15,11 @@
                 controller: "NewConverterController",
                 controllerAs: "model"
             })
+            .when("/converter/:converterId", {
+                templateUrl: "views/converter/converter-edit.view.html",
+                controller: "EditConverterController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/converter"
             })

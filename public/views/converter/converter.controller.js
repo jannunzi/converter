@@ -1,8 +1,29 @@
 (function(){
     angular
         .module("ConverterApp")
+        .controller("EditConverterController", editConverterController)
         .controller("ConverterListController", converterListController)
         .controller("NewConverterController", newConverterController);
+
+    function editConverterController($routeParams, ConverterService) {
+
+        var vm = this;
+
+        function init() {
+            ConverterService
+                .findConverterById($routeParams.converterId)
+                .then(
+                    function(response) {
+                        vm.data = response.data;
+                    },
+                    function(err) {
+                        vm.error = err;
+                    }
+                );
+        }
+        init();
+
+    }
 
     function converterListController(ConverterService) {
 

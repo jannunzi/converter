@@ -2,15 +2,29 @@ module.exports = function(app) {
 
     app.post("/api/converter", createConverter);
     app.get ("/api/converter", findAllConverters);
+    app.get ("/api/converter/:converterId", findConverterById);
 
     var converterModel = require("../models/converter/converter.model.server.js")();
+
+    function findConverterById(req, res) {
+        converterModel
+            .findConverterById(req.params.converterId)
+            .then(
+                function(data) {
+                    res.json(data);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
 
     function findAllConverters(req, res) {
         converterModel
             .findAllConverters()
             .then(
-                function(converters) {
-                    res.json(converters);
+                function(data) {
+                    res.json(data);
                 },
                 function(err) {
                     res.status(400).send(err);
@@ -19,10 +33,8 @@ module.exports = function(app) {
     }
 
     function createConverter(req, res) {
-        var converter = req.body;
-        console.log(converter);
         converterModel
-            .createConverter(converter)
+            .createConverter(req.body)
             .then(
                 function(){
                     res.send(200);

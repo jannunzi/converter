@@ -10,7 +10,9 @@
 <table class="table">
     <tr ng-repeat="converter in model.data">
         <td>
-            {{converter.name}}
+            <a href="#/converter/{{converter._id}}">
+                {{converter.name}}
+            </a>
         </td>
     </tr>
 </table>
