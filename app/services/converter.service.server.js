@@ -1,11 +1,25 @@
 module.exports = function(app) {
 
-    app.post("/api/converter", createConverter);
-    app.get ("/api/converter", findAllConverters);
-    app.get ("/api/converter/:converterId", findConverterById);
-    app.put ("/api/converter/:converterId", updateConverter);
+    app.post  ("/api/converter", createConverter);
+    app.get   ("/api/converter", findAllConverters);
+    app.get   ("/api/converter/:converterId", findConverterById);
+    app.put   ("/api/converter/:converterId", updateConverter);
+    app.delete("/api/converter/:converterId", removeConverter);
 
     var converterModel = require("../models/converter/converter.model.server.js")();
+
+    function removeConverter(req, res) {
+        converterModel
+            .removeConverter(req.params.converterId)
+            .then(
+                function(){
+                    res.send(200);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
+    }
 
     function updateConverter(req, res) {
         converterModel

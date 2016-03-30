@@ -10,6 +10,7 @@
         var vm = this;
 
         vm.updateConverter = updateConverter;
+        vm.removeConverter = removeConverter;
 
         function init() {
             ConverterService
@@ -24,6 +25,19 @@
                 );
         }
         init();
+
+        function removeConverter(converter) {
+            ConverterService
+                .removeConverter(converter)
+                .then(
+                    function() {
+                        $location.url("/converter");
+                    },
+                    function(err) {
+                        vm.error = err;
+                    }
+                );
+        }
 
         function updateConverter(converter) {
             ConverterService

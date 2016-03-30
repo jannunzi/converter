@@ -8,9 +8,14 @@
             createConverter: createConverter,
             findAllConverters: findAllConverters,
             findConverterById: findConverterById,
-            updateConverter: updateConverter
+            updateConverter: updateConverter,
+            removeConverter: removeConverter
         };
         return api;
+
+        function removeConverter(converter) {
+            return $http.delete("/api/converter/"+converter._id);
+        }
 
         function updateConverter(converter) {
             return $http.put("/api/converter/"+converter._id, converter);
